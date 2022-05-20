@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title> <?php echo $title ?> </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -35,31 +35,30 @@
                     <table class="table table-bordered border-primary">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Mahasiswa</th>
+                                <th scope="col">Email Mahasiswa</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($mhs as $m) : ?>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td scope="col"><?= $no ?></td>
+                                <td scope="col"><?= $m['nama_153'] ?></td>
+                                <td scope="col"><?= $m['email_153'] ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?>/mhs/edit/<?= $m['id_153'] ?>"
+                                        class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="<?= base_url() ?>/mhs/hapus/<?= $m['id_153'] ?>"
+                                        class="btn btn-danger btn-sm">Hapus</a>
+                                </td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
+                            <?php
+                                $no++;
+                            endforeach; ?>
                         </tbody>
                     </table>
                 </div>
