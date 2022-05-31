@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\Post;
+use App\Models\PostModel;
 
-class Home extends BaseController
+class HomeController extends BaseController
 {
     public function index()
     {
-        $postingan = new Post();
+        $postingan = new PostModel();
         $data = [
             'title' => 'Blog PAW',
             'posts' => $postingan->findAll()

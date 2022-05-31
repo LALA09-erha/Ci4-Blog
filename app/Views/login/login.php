@@ -4,7 +4,8 @@
 
 <div class="card-body">
     <h4 class="card-title"><?= $title ?></h4>
-    <form method="POST" class="my-login-validation" novalidate="">
+    <form method="POST" class="my-login-validation">
+        <?= csrf_field() ?>
         <div class="form-group">
             <label for="email">Alamat Email</label>
             <input id="email" type="email" class="form-control" name="email" value="" required autofocus>

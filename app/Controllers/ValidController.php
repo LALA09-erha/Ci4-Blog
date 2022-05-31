@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\Blog;
+use App\Models\BlogModel;
 
-class Valid extends BaseController
+class ValidController extends BaseController
 {
     public function index()
     {
@@ -22,21 +22,9 @@ class Valid extends BaseController
     }
     public function daftaruser()
     {
-        $blogModel = new Blog();
-        #validation data input user
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'email' => 'required|valid_email',
-            'username' => 'required',
-            'role' => 'required',
-            'pass' => 'required|min_length[5]',
+        $blogModel = new BlogModel();
 
-        ]);
-        #jika ada kesalahan input data user maka akan dikembalikan ke halaman regist 
-        if (!$validation->run($_POST)) {
-            session()->setFlashdata('pesan', 'Diisi dengan benar,Pastikan password lebih dari 5 karakter');
-            return redirect()->to(site_url("regist"));
-        }
+
         $email = $this->request->getPost('email');
         $nama = $this->request->getPost('nama');
         #cek unik email dan username

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Blog extends Model
+class BlogModel extends Model
 {
     protected $table      = 'pengguna';
     protected $primaryKey = 'ID';
