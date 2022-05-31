@@ -1,7 +1,14 @@
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
-
+1. env
+2. app.php
+3. controler
+4. model
+5. view
+6. router
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
 More information can be found at the [official site](http://codeigniter.com).
 
