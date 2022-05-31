@@ -18,7 +18,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('', 'Home::index');
 $routes->get('/login', 'Valid::index');
 $routes->get('/regist', 'Valid::regist');
+$routes->post('/daftaruser', 'Valid::daftaruser');
+
 
 /*
  * --------------------------------------------------------------------

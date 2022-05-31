@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Models\Mhsmodel;
+use App\Models\Post;
 
 class Home extends BaseController
 {
     public function index()
     {
-        $mhsmodel = new Mhsmodel();
+        $postingan = new Post();
         $data = [
-            'title' => 'Tampil Data',
-            'mhs' => $mhsmodel->findAll()
+            'title' => 'Blog PAW',
+            'posts' => $postingan->findAll()
         ];
-        return view('home', $data);
+        return view('home/home', $data);
     }
 }

@@ -22,12 +22,18 @@
                 Password is required
             </div>
         </div>
-
-
-
+        <?php
+        if (session()->getFlashdata('pesan')) {
+        ?>
+        <div class="alert alert-info text-center" role="alert">
+            <?= session()->getFlashdata('pesan') ?>
+        </div>
+        <?php
+        }
+        ?>
         <div class="form-group m-0">
             <button type="submit" class="btn btn-primary btn-block">
-                Login
+                Masuk
             </button>
         </div>
         <div class="mt-4 text-center">

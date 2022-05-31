@@ -4,17 +4,17 @@
 
 <div class="card-body">
     <h4 class="card-title"><?= $title ?></h4>
-    <form method="POST" class="my-login-validation" novalidate="">
+    <form method="POST" class="my-login-validation" novalidate="" action="/daftaruser">
         <div class="form-group">
             <label for="email">Alamat Email</label>
-            <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+            <input id="email" type="email" class="form-control" name="email" required autofocus>
             <div class="invalid-feedback">
                 Email is invalid
             </div>
         </div>
         <div class="form-group">
             <label for="nama">Username</label>
-            <input id="nama" type="text" class="form-control" name="nama" value="" required>
+            <input id="nama" type="text" class="form-control" name="nama" required>
             <div class="invalid-feedback">
                 Username is invalid
             </div>
@@ -37,10 +37,18 @@
                 Password is required
             </div>
         </div>
-
+        <?php
+        if (session()->getFlashdata('pesan')) {
+        ?>
+        <div class="alert alert-info text-center" role="alert">
+            <?= session()->getFlashdata('pesan') ?>
+        </div>
+        <?php
+        }
+        ?>
         <div class="form-group m-0">
             <button type="submit" class="btn btn-primary btn-block">
-                Login
+                Daftar
             </button>
         </div>
         <div class="mt-4 text-center">
