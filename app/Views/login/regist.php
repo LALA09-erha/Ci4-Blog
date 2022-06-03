@@ -12,6 +12,7 @@
             <div class="invalid-feedback">
                 Email is invalid
             </div>
+
         </div>
         <div class="form-group">
             <label for="nama">Username</label>

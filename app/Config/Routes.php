@@ -17,8 +17,8 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('');
+$routes->setDefaultController('HomeController');
+$routes->setDefaultMethod('/');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
@@ -35,6 +35,19 @@ $routes->get('', 'HomeController::index');
 $routes->get('/login', 'ValidController::index');
 $routes->get('/regist', 'ValidController::regist');
 $routes->post('/daftaruser', 'ValidController::daftaruser');
+$routes->post('/loginuser', 'ValidController::loginuser');
+$routes->get('/logout', 'ValidController::logout');
+$routes->get('/post', 'PostController::index');
+$routes->get('/tambahpost', 'PostController::tambah');
+$routes->post('/prosespost', 'PostController::prosespost');
+$routes->post('/editpost', 'PostController::editpost');
+$routes->get('/post/(:segment)', 'HomeController::detail/$1');
+$routes->get('/edit/(:segment)', 'PostController::edit/$1');
+$routes->get('/hapus/(:segment)', 'PostController::hapus/$1');
+$routes->get('/users', 'AdminController::index');
+$routes->get('/update/(:segment)', 'AdminController::update/$1');
+$routes->get('/delete/(:segment)', 'AdminController::delete/$1');
+$routes->post('/updateuser', 'AdminController::updateuser');
 
 
 /*

@@ -44,4 +44,38 @@ class ValidController extends BaseController
             return redirect()->to(site_url("login"));
         }
     }
+
+    public function loginuser()
+    {
+        $blogModel = new BlogModel();
+        $email = $this->request->getPost('email');
+        $pass = $this->request->getPost('password');
+        $cek = $blogModel->where('email', $email)->first();
+        // dd($cek);
+        if ($cek) {
+            if (password_verify($pass, $cek['pass'])) {
+                $data = [
+                    'email' => $cek['email'],
+                    'username' => $cek['username'],
+                    'role' => $cek['role'],
+                    'id' => $cek['ID'],
+                ];
+
+                session()->setFlashdata('pesan', 'Login Berhasil');
+                session()->set($data);
+                return redirect()->to('/');
+            } else {
+                session()->setFlashdata('pesan', 'Login Gagal');
+                return redirect()->to(site_url("login"));
+            }
+        } else {
+            session()->setFlashdata('pesan', 'Login Gagal');
+            return redirect()->to(site_url("login"));
+        }
+    }
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
+    }
 }
