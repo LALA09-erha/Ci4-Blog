@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('', 'HomeController::index');
+$routes->get('/post/(:segment)', 'HomeController::detail/$1');
 $routes->get('/login', 'ValidController::index');
 $routes->get('/regist', 'ValidController::regist');
 $routes->post('/daftaruser', 'ValidController::daftaruser');
@@ -41,7 +42,6 @@ $routes->get('/post', 'PostController::index');
 $routes->get('/tambahpost', 'PostController::tambah');
 $routes->post('/prosespost', 'PostController::prosespost');
 $routes->post('/editpost', 'PostController::editpost');
-$routes->get('/post/(:segment)', 'HomeController::detail/$1');
 $routes->get('/edit/(:segment)', 'PostController::edit/$1');
 $routes->get('/hapus/(:segment)', 'PostController::hapus/$1');
 $routes->get('/users', 'AdminController::index');
