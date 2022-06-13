@@ -6,9 +6,10 @@ use App\Models\PostModel;
 
 class HomeController extends BaseController
 {
+
+    // untuk menampilkan halaman postingan untuk user pembaca
     public function index()
     {
-        // $postingan = new PostModel();
         $db = \Config\Database::connect();
         $query = $db->query("SELECT * FROM post join pengguna on post.ID = pengguna.ID where post.post_status = '1' ORDER by post.date desc");
         $postingan = $query->getResult();
@@ -22,6 +23,9 @@ class HomeController extends BaseController
             return redirect()->to('login')->with('pesan', 'Anda harus login terlebih dahulu');
         }
     }
+
+
+    // untuk menampilkan halaman detail postingan
 
     public function detail($slug)
     {

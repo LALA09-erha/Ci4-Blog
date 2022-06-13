@@ -6,6 +6,7 @@ use App\Models\PostModel;
 
 class PostController extends BaseController
 {
+    // untuk menampilkan halaman postingan
     public function index()
     {
         #jika tidak ada session maka redirect ke halaman login
@@ -23,6 +24,8 @@ class PostController extends BaseController
         return view('home\post', $data);
     }
 
+
+    // untuk menampilkan halaman tambah postingan
     public function tambah()
     {
         if (!session()->get('email') || !session()->get('username')) {
@@ -35,12 +38,14 @@ class PostController extends BaseController
         return view('home\tambah', $data);
     }
 
+
+    // untuk memproses postingan
     public function prosespost()
     {
         $blogModel = new PostModel();
         $judul = $this->request->getVar('judul');
         $slug = url_title($judul, '-', true);
-        #cek slug sudah ada atau belum di database 
+        // cek slug sudah ada atau belum di database 
         $cek = $blogModel->where('slug', $slug)->first();
         if ($cek) {
             $slug = $slug . '-' . time();
@@ -57,6 +62,9 @@ class PostController extends BaseController
         session()->setFlashdata('pesan', 'Postingan berhasil ditambahkan');
         return redirect()->to('/post');
     }
+
+
+    // Untuk menampilkan halaman edit postingan
 
     public function edit($slug)
     {
@@ -78,6 +86,8 @@ class PostController extends BaseController
         session()->setFlashdata('pesan', $query['judul']);
         return view('home\edit', $data);
     }
+
+    // untuk memproses data postingan yang di edit
 
     public function editpost()
     {
@@ -103,6 +113,8 @@ class PostController extends BaseController
         session()->setFlashdata('pesan', 'Postingan berhasil diubah');
         return redirect()->to('/post');
     }
+
+    // untuk menghapus postingan
 
     public function hapus($id)
     {

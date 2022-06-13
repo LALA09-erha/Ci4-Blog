@@ -4,6 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
+// untuk mengatur dan menghubungkan ke database dengan table pengguna
 class BlogModel extends Model
 {
     protected $table      = 'pengguna';

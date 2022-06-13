@@ -6,6 +6,8 @@ use App\Models\BlogModel;
 
 class ValidController extends BaseController
 {
+
+    // untuk menampilkan halaman login
     public function index()
     {
         $data = [
@@ -13,6 +15,8 @@ class ValidController extends BaseController
         ];
         return view('login\login', $data);
     }
+
+    // untuk menampilkan halamanan register
     public function regist()
     {
         $data = [
@@ -20,6 +24,8 @@ class ValidController extends BaseController
         ];
         return view('login\regist', $data);
     }
+
+    // untuk memproses data register
     public function daftaruser()
     {
         $blogModel = new BlogModel();
@@ -44,6 +50,8 @@ class ValidController extends BaseController
             return redirect()->to(site_url("login"));
         }
     }
+
+    // untuk memproses data login
 
     public function loginuser()
     {
@@ -73,9 +81,12 @@ class ValidController extends BaseController
             return redirect()->to(site_url("login"));
         }
     }
+
+    // untuk memproses logout
     public function logout()
     {
         session()->destroy();
+        session()->setFlashdata('pesan', 'Logout Berhasil');
         return redirect()->to('/login');
     }
 }

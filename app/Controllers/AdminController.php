@@ -2,11 +2,14 @@
 
 namespace App\Controllers;
 
+// Mengambil data dari model
 use App\Models\BlogModel;
 use App\Models\PostModel;
 
 class AdminController extends BaseController
 {
+
+    // Untuk Menampilkan Halaman Dashboard Admin
     public function index()
     {
         $users = new BlogModel();
@@ -21,6 +24,8 @@ class AdminController extends BaseController
         }
     }
 
+
+    // Untuk Menampilkan Halaman Update data user
     public function update($id)
     {
         $users = new BlogModel();
@@ -39,6 +44,8 @@ class AdminController extends BaseController
             return redirect()->to('login')->with('pesan', 'Anda harus login terlebih dahulu');
         }
     }
+
+    // Untuk memproses data update user
     public function updateuser()
     {
         $users = new BlogModel();
@@ -56,6 +63,7 @@ class AdminController extends BaseController
         }
     }
 
+    // untuk memproses data delete user
     public function delete($id)
     {
         $users = new BlogModel();
@@ -65,7 +73,7 @@ class AdminController extends BaseController
             return redirect()->to('/admin');
         }
 
-        #cari post berdasarkan id user
+        // cari post berdasarkan id user
         $cek = $post->where('ID', $id)->findAll();
         if (empty($cek)) {
             $users->delete($id);

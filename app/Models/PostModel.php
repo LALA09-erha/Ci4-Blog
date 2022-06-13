@@ -4,6 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
+// untuk mengatur dan menghubungkan ke database dengan table post
 class PostModel extends Model
 {
     protected $table      = 'post';
